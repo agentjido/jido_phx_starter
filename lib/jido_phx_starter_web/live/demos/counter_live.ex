@@ -81,7 +81,7 @@ defmodule JidoPhxStarterWeb.Demos.CounterLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} wide>
       <div class="space-y-6">
         <.header>
           Demo 1: Counter Agent

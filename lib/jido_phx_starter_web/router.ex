@@ -3,6 +3,8 @@ defmodule JidoPhxStarterWeb.Router do
 
   use AshAuthentication.Phoenix.Router
 
+  alias JidoPhxStarterWeb.DemoMetadata
+
   import AshAuthentication.Plug.Helpers
 
   pipeline :browser do
@@ -38,14 +40,12 @@ defmodule JidoPhxStarterWeb.Router do
     end
   end
 
-  scope "/demos/jido", JidoPhxStarterWeb.Demos do
+  scope "/jido" do
     pipe_through :browser
 
-    live "/1-counter", CounterLive, :index
-    live "/2-demand-tracker", DemandTrackerLive, :index
-    live "/3-chat", ChatLive, :index
-    live "/4-listings", ListingManagerLive, :index
-    live "/5-weekend-sale", WeekendSaleLive, :index
+    for demo <- DemoMetadata.demos() do
+      live "/#{demo.slug}", demo.live, :index
+    end
   end
 
   scope "/", JidoPhxStarterWeb do

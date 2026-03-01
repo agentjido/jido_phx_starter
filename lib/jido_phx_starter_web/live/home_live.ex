@@ -4,58 +4,17 @@ defmodule JidoPhxStarterWeb.HomeLive do
   """
   use JidoPhxStarterWeb, :live_view
 
-  @demos [
-    %{
-      path: "/demos/jido/1-counter",
-      title: "Counter Agent",
-      number: 1,
-      description:
-        "Core Jido concepts: Agent as immutable data structure, Actions with validated params, Signals and signal routing",
-      concepts: ["Agent", "Actions", "Signals", "AgentServer.call/3"]
-    },
-    %{
-      path: "/demos/jido/2-demand-tracker",
-      title: "Demand Tracker",
-      number: 2,
-      description:
-        "Jido Directives: Schedule for delayed/recurring signals, Emit for domain events, State updates vs side effects",
-      concepts: ["Directives", "Schedule", "Emit", "State Management"]
-    },
-    %{
-      path: "/demos/jido/3-chat",
-      title: "AI Chat Agent",
-      number: 3,
-      description:
-        "Jido.AI integration: ReActAgent macro, async LLM communication, streaming responses via polling",
-      concepts: ["ReActAgent", "Model Aliases", "Async ask/2", "Strategy Snapshot"]
-    },
-    %{
-      path: "/demos/jido/4-listings",
-      title: "Listing Manager",
-      number: 4,
-      description:
-        "AshJido integration: Ash resources as agent tools, AI-driven CRUD operations, policy enforcement",
-      concepts: ["AshJido", "Ash Resources", "Generated Actions", "ETS Data Layer"]
-    },
-    %{
-      path: "/demos/jido/5-weekend-sale",
-      title: "Multi-Agent Weekend Sale",
-      number: 5,
-      description:
-        "Multi-agent orchestration: Orchestrator spawning specialists, parallel execution, fan-in results, unified plan execution",
-      concepts: ["spawn_agent", "emit_to_parent", "Signal Routing", "Fan-in/Fan-out"]
-    }
-  ]
+  alias JidoPhxStarterWeb.DemoMetadata
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :demos, @demos)}
+    {:ok, assign(socket, :demos, DemoMetadata.home_cards())}
   end
 
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} wide>
       <div class="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
         <div class="container mx-auto px-4 py-12">
           <header class="text-center mb-12">
@@ -79,8 +38,8 @@ defmodule JidoPhxStarterWeb.HomeLive do
 
   defp demo_card(assigns) do
     ~H"""
-    <a
-      href={@demo.path}
+    <.link
+      navigate={@demo.path}
       class="group card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
     >
       <div class="card-body">
@@ -108,7 +67,7 @@ defmodule JidoPhxStarterWeb.HomeLive do
           </span>
         </div>
       </div>
-    </a>
+    </.link>
     """
   end
 end

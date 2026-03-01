@@ -2,7 +2,7 @@ defmodule JidoPhxStarterWeb.Demos.ChatLive do
   @moduledoc """
   Demo: AI Chat Agent with ReAct Loop
 
-  Demonstrates Jido.AI ReActAgent with full observability:
+  Demonstrates Jido.AI.Agent with full observability:
   - Streaming text display with iteration tracking
   - Tool call lifecycle (planned → executing → completed)
   - Thinking/reasoning visibility
@@ -39,6 +39,7 @@ defmodule JidoPhxStarterWeb.Demos.ChatLive do
       |> assign(:messages, [])
       |> assign(:panels, %{thinking: "", usage: %{}, conversation: [], config: %{}})
       |> assign(:conversation_history, [])
+      |> assign(:visibility, %{thinking: true, usage: true, tools: true, conversation: true})
       |> assign(:poll_ref, nil)
 
     if connected?(socket) do
@@ -100,9 +101,13 @@ defmodule JidoPhxStarterWeb.Demos.ChatLive do
   end
 
   def handle_event("toggle", %{"key" => key}, socket) do
-    key_atom = String.to_existing_atom(key)
-    visibility = Map.update!(socket.assigns.visibility, key_atom, &(!&1))
-    {:noreply, assign(socket, :visibility, visibility)}
+    case key do
+      "thinking" -> {:noreply, toggle_panel(socket, :thinking)}
+      "usage" -> {:noreply, toggle_panel(socket, :usage)}
+      "tools" -> {:noreply, toggle_panel(socket, :tools)}
+      "conversation" -> {:noreply, toggle_panel(socket, :conversation)}
+      _ -> {:noreply, socket}
+    end
   end
 
   def handle_event("restart_agent", _params, socket) do
@@ -180,6 +185,11 @@ defmodule JidoPhxStarterWeb.Demos.ChatLive do
     else
       {:noreply, socket}
     end
+  end
+
+  defp toggle_panel(socket, panel) do
+    visibility = Map.update!(socket.assigns.visibility, panel, &(!&1))
+    assign(socket, :visibility, visibility)
   end
 
   defp schedule_poll(socket) do
@@ -391,11 +401,11 @@ defmodule JidoPhxStarterWeb.Demos.ChatLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} wide>
       <div class="space-y-6 max-w-7xl mx-auto">
         <.header>
           AI Chat Agent Demo
-          <:subtitle>ReActAgent with streaming, tool calls, and full observability</:subtitle>
+          <:subtitle>Jido.AI.Agent with streaming, tool calls, and full observability</:subtitle>
         </.header>
 
         <%!-- Error Display --%>
