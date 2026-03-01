@@ -48,25 +48,25 @@ config :spark,
     "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
   ]
 
-config :jido_marketplace,
-  ecto_repos: [JidoMarketplace.Repo],
+config :jido_phx_starter,
+  ecto_repos: [JidoPhxStarter.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [JidoMarketplace.Accounts, JidoMarketplace.Demos.ListingsDomain],
+  ash_domains: [JidoPhxStarter.Accounts, JidoPhxStarter.Demos.ListingsDomain],
   ash_authentication: [return_error_on_invalid_magic_link_token?: true]
 
-config :jido_marketplace, JidoMarketplace.Jido,
+config :jido_phx_starter, JidoPhxStarter.Jido,
   max_tasks: 1000,
   agent_pools: []
 
 # Configure the endpoint
-config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
+config :jido_phx_starter, JidoPhxStarterWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: JidoMarketplaceWeb.ErrorHTML, json: JidoMarketplaceWeb.ErrorJSON],
+    formats: [html: JidoPhxStarterWeb.ErrorHTML, json: JidoPhxStarterWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: JidoMarketplace.PubSub,
+  pubsub_server: JidoPhxStarter.PubSub,
   live_view: [signing_salt: "/OmhycEO"]
 
 # Configure the mailer
@@ -76,12 +76,12 @@ config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :jido_marketplace, JidoMarketplace.Mailer, adapter: Swoosh.Adapters.Local
+config :jido_phx_starter, JidoPhxStarter.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.25.4",
-  jido_marketplace: [
+  jido_phx_starter: [
     args:
       ~w(js/app.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/* --alias:@=.),
     cd: Path.expand("../assets", __DIR__),
@@ -91,7 +91,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "4.1.12",
-  jido_marketplace: [
+  jido_phx_starter: [
     args: ~w(
       --input=assets/css/app.css
       --output=priv/static/assets/css/app.css

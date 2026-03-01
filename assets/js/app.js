@@ -22,7 +22,7 @@ import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
-import {hooks as colocatedHooks} from "phoenix-colocated/jido_marketplace"
+import {hooks as colocatedHooks} from "phoenix-colocated/jido_phx_starter"
 import topbar from "../vendor/topbar"
 
 const ScrollBottom = {
@@ -97,4 +97,3 @@ if (process.env.NODE_ENV === "development") {
     window.liveReloader = reloader
   })
 }
-

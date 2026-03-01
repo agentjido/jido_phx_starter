@@ -23,7 +23,7 @@ erl_crash.dump
 /tmp/
 
 # Ignore package tarball (built via "mix hex.build").
-jido_marketplace-*.tar
+jido_phx_starter-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/

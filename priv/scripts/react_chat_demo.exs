@@ -16,7 +16,7 @@
 #   --show-conversation  Show full conversation history after each response
 #   --verbose            Enable all visibility options
 
-alias JidoMarketplace.Demos.ChatAgent
+alias JidoPhxStarter.Demos.ChatAgent
 
 defmodule ReactChatDemo do
   @moduledoc """
@@ -36,7 +36,7 @@ defmodule ReactChatDemo do
   end
 
   def run(opts \\ []) do
-    {:ok, _} = Application.ensure_all_started(:jido_marketplace)
+    {:ok, _} = Application.ensure_all_started(:jido_phx_starter)
     ensure_ai_config!()
 
     show_thinking = Keyword.get(opts, :show_thinking, false)
@@ -52,7 +52,7 @@ defmodule ReactChatDemo do
       Jido.AgentServer.start_link(
         agent: ChatAgent,
         id: "cli-chat-#{System.unique_integer([:positive])}",
-        jido: JidoMarketplace.Jido
+        jido: JidoPhxStarter.Jido
       )
 
     print_banner()

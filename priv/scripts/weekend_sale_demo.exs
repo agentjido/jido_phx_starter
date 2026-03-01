@@ -16,9 +16,9 @@
 #   --execute       Actually execute the plan after approval
 #   --no-llm        Disable LLM for announcement generation (use templates)
 
-alias JidoMarketplace.Demos.MultiAgent.OrchestratorAgent
-alias JidoMarketplace.Demos.ListingsDomain
-alias JidoMarketplace.Demos.ListingsDomain.Listing
+alias JidoPhxStarter.Demos.MultiAgent.OrchestratorAgent
+alias JidoPhxStarter.Demos.ListingsDomain
+alias JidoPhxStarter.Demos.ListingsDomain.Listing
 
 defmodule WeekendSaleDemo do
   @moduledoc """
@@ -29,7 +29,7 @@ defmodule WeekendSaleDemo do
   @max_wait_ms 10_000
 
   def run(opts \\ []) do
-    {:ok, _} = Application.ensure_all_started(:jido_marketplace)
+    {:ok, _} = Application.ensure_all_started(:jido_phx_starter)
 
     discount = Keyword.get(opts, :discount, 20)
     auto_execute = Keyword.get(opts, :execute, false)
@@ -45,7 +45,7 @@ defmodule WeekendSaleDemo do
       Jido.AgentServer.start_link(
         agent: OrchestratorAgent,
         id: "orchestrator-#{System.unique_integer([:positive])}",
-        jido: JidoMarketplace.Jido
+        jido: JidoPhxStarter.Jido
       )
 
     IO.puts("#{IO.ANSI.green()}✓ Orchestrator started#{IO.ANSI.reset()}")

@@ -1,4 +1,4 @@
-defmodule JidoMarketplace.Repo.Migrations.InitializeAndAddAuthenticationResourcesAndAddMagicLinkAuth do
+defmodule JidoPhxStarter.Repo.Migrations.InitializeAndAddAuthenticationResourcesAndAddMagicLinkAuth do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

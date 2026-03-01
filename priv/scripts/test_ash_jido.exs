@@ -3,8 +3,8 @@
 #
 # Or paste into iex -S mix after compiling
 
-alias JidoMarketplace.Demos.ListingsDomain
-alias JidoMarketplace.Demos.ListingsDomain.Listing
+alias JidoPhxStarter.Demos.ListingsDomain
+alias JidoPhxStarter.Demos.ListingsDomain.Listing
 
 IO.puts("\n=== AshJido Integration Test ===\n")
 

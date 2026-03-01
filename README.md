@@ -1,4 +1,4 @@
-# JidoMarketplace
+# JidoPhxStarter
 
 To start your Phoenix server:
 

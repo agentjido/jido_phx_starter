@@ -52,7 +52,7 @@
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.JidoMarketplace.Repo",
+  "repo": "Elixir.JidoPhxStarter.Repo",
   "schema": null,
   "table": "users"
 }

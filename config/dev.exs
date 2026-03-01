@@ -2,11 +2,11 @@ import Config
 config :ash, policies: [show_policy_breakdowns?: true]
 
 # Configure your database
-config :jido_marketplace, JidoMarketplace.Repo,
+config :jido_phx_starter, JidoPhxStarter.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "jido_marketplace_dev",
+  database: "jido_phx_starter_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -17,7 +17,7 @@ config :jido_marketplace, JidoMarketplace.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
+config :jido_phx_starter, JidoPhxStarterWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}],
@@ -26,8 +26,8 @@ config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "jOEU1Hm4J5a096ywQxDSAATMGx+vm26x30kjgvRz53EKaueiGSMpozpKFGGGmKIe",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:jido_marketplace, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:jido_marketplace, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:jido_phx_starter, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:jido_phx_starter, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -54,7 +54,7 @@ config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
 # different ports.
 
 # Reload browser tabs when matching files change.
-config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
+config :jido_phx_starter, JidoPhxStarterWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
@@ -63,13 +63,13 @@ config :jido_marketplace, JidoMarketplaceWeb.Endpoint,
       # Gettext translations
       ~r"priv/gettext/.*\.po$",
       # Router, Controllers, LiveViews and LiveComponents
-      ~r"lib/jido_marketplace_web/router\.ex$",
-      ~r"lib/jido_marketplace_web/(controllers|live|components)/.*\.(ex|heex)$"
+      ~r"lib/jido_phx_starter_web/router\.ex$",
+      ~r"lib/jido_phx_starter_web/(controllers|live|components)/.*\.(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :jido_marketplace,
+config :jido_phx_starter,
   dev_routes: true,
   token_signing_secret: "AR3VdEmlPnIoeF3nyT8EpPAhTrE4vL6e"
 

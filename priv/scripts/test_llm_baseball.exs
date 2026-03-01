@@ -1,7 +1,7 @@
 # Test script for AshJido LLM integration with baseball cards prompt
 # Run with: mix run priv/scripts/test_llm_baseball.exs
 
-alias JidoMarketplace.Demos.ListingChatAgent
+alias JidoPhxStarter.Demos.ListingChatAgent
 
 IO.puts("\n=== AshJido LLM Integration Test ===\n")
 
@@ -10,7 +10,7 @@ IO.puts("\n=== AshJido LLM Integration Test ===\n")
   Jido.AgentServer.start_link(
     agent: ListingChatAgent,
     id: "test-agent-#{System.unique_integer([:positive])}",
-    jido: JidoMarketplace.Jido
+    jido: JidoPhxStarter.Jido
   )
 
 IO.puts("Agent server started: #{inspect(pid)}")
@@ -65,10 +65,10 @@ _agent = send_and_wait.(prompt)
 # Check results
 IO.puts("\n--- Verifying listings were created ---")
 
-alias JidoMarketplace.Demos.ListingsDomain.Listing
+alias JidoPhxStarter.Demos.ListingsDomain.Listing
 
 ctx = %{
-  domain: JidoMarketplace.Demos.ListingsDomain,
+  domain: JidoPhxStarter.Demos.ListingsDomain,
   actor: %{id: "00000000-0000-0000-0000-000000000001", role: :user}
 }
 

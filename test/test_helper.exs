@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(JidoMarketplace.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(JidoPhxStarter.Repo, :manual)

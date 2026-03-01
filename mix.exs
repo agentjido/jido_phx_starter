@@ -1,9 +1,9 @@
-defmodule JidoMarketplace.MixProject do
+defmodule JidoPhxStarter.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :jido_marketplace,
+      app: :jido_phx_starter,
       version: "0.1.0",
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -21,7 +21,7 @@ defmodule JidoMarketplace.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {JidoMarketplace.Application, []},
+      mod: {JidoPhxStarter.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -42,8 +42,8 @@ defmodule JidoMarketplace.MixProject do
   defp deps do
     [
       # Jido
-      {:jido, "~> 2.0-rc.1", override: true},
-      {:jido_ai, github: "agentjido/jido_ai", branch: "develop"},
+      {:jido, "~> 2.0", override: true},
+      {:jido_ai, "~> 2.0.0-rc.0"},
       {:ash_jido, github: "agentjido/ash_jido", branch: "main"},
 
       # Base Dependencies
@@ -68,13 +68,7 @@ defmodule JidoMarketplace.MixProject do
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
-      {:heroicons,
-       github: "tailwindlabs/heroicons",
-       tag: "v2.2.0",
-       sparse: "optimized",
-       app: false,
-       compile: false,
-       depth: 1},
+      {:heroicons_css, "~> 2.2", app: false, compile: false},
       {:swoosh, "~> 1.16"},
       {:mdex, "~> 0.4"},
       {:req, "~> 0.5"},
@@ -100,10 +94,10 @@ defmodule JidoMarketplace.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ash.setup --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind jido_marketplace", "esbuild jido_marketplace"],
+      "assets.build": ["compile", "tailwind jido_phx_starter", "esbuild jido_phx_starter"],
       "assets.deploy": [
-        "tailwind jido_marketplace --minify",
-        "esbuild jido_marketplace --minify",
+        "tailwind jido_phx_starter --minify",
+        "esbuild jido_phx_starter --minify",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
