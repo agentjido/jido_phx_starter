@@ -87,7 +87,7 @@ defmodule JidoPhxStarterWeb.Demos.ListingManagerLive do
     if input == "" or socket.assigns.running? or is_nil(socket.assigns.agent_pid) do
       {:noreply, socket}
     else
-      :ok = ListingChatAgent.ask(socket.assigns.agent_pid, input)
+      {:ok, _request} = ListingChatAgent.ask(socket.assigns.agent_pid, input)
 
       user_msg = %{id: gen_id(), role: :user, content: input}
       pending_msg = %{id: gen_id(), role: :assistant, content: "", pending: true}
@@ -350,7 +350,6 @@ defmodule JidoPhxStarterWeb.Demos.ListingManagerLive do
 
   defp format_args(args), do: inspect(args) |> String.slice(0, 80)
 
-  defp format_result(nil), do: nil
   defp format_result({:ok, result}), do: inspect(result, limit: 5, printable_limit: 100)
   defp format_result({:error, reason}), do: "Error: #{inspect(reason)}"
   defp format_result(result), do: inspect(result, limit: 5, printable_limit: 100)
