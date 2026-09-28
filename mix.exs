@@ -43,11 +43,11 @@ defmodule JidoPhxStarter.MixProject do
     [
       # Jido
       {:jido, "~> 2.0", override: true},
-      {:jido_ai, "~> 2.0.0-rc.0"},
+      {:jido_ai, "~> 2.3"},
       {:ash_jido, github: "agentjido/ash_jido", branch: "main"},
 
       # Base Dependencies
-      {:gettext, "~> 0.10", override: true},
+      {:gettext, "~> 1.0", override: true},
       {:picosat_elixir, "~> 0.2"},
       {:sourceror, "~> 1.8", only: [:dev, :test]},
       {:usage_rules, "~> 1.2", only: [:dev]},
@@ -63,9 +63,9 @@ defmodule JidoPhxStarter.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 1.1.0"},
+      {:phoenix_live_view, "~> 1.2"},
       {:lazy_html, ">= 0.1.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.8.3"},
+      {:phoenix_live_dashboard, "~> 0.9"},
       {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       {:heroicons_css, "~> 2.2", app: false, compile: false},
@@ -75,7 +75,7 @@ defmodule JidoPhxStarter.MixProject do
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.2.0"},
+      {:dns_cluster, "~> 0.3"},
       {:bandit, "~> 1.5"},
       {:tidewave, "~> 0.5"}
     ]

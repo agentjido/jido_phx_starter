@@ -411,8 +411,7 @@ defmodule JidoPhxStarterWeb.Demos.WeekendSaleLive do
               class="progress progress-primary w-full"
               value={progress_percent(assigns)}
               max="100"
-            >
-            </progress>
+            ></progress>
           </div>
         <% end %>
 
