@@ -42,14 +42,8 @@ defmodule JidoPhxStarter.MixProject do
   defp deps do
     [
       # Jido
-      {:jido,
-       git: "https://github.com/agentjido/jido.git",
-       ref: "0c8853bf451a40330b7192c9d2200a06f9c61261",
-       override: true},
-      {:jido_ai,
-       git: "https://github.com/agentjido/jido_ai.git",
-       ref: "9558c18a31380c00d0694ea5c747dd40ac50ead9",
-       override: true},
+      {:jido, "~> 2.4"},
+      {:jido_ai, "~> 2.4"},
       {:ash_jido, github: "agentjido/ash_jido", branch: "main"},
 
       # Base Dependencies
