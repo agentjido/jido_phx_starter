@@ -5,8 +5,6 @@ defmodule JidoPhxStarterWeb.Router do
 
   alias JidoPhxStarterWeb.DemoMetadata
 
-  import AshAuthentication.Plug.Helpers
-
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
