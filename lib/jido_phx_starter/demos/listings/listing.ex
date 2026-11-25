@@ -58,7 +58,15 @@ defmodule JidoPhxStarter.Demos.ListingsDomain.Listing do
   end
 
   actions do
-    defaults [:read]
+    read :read do
+      primary? true
+
+      pagination do
+        offset? true
+        keyset? true
+        countable true
+      end
+    end
 
     create :create do
       accept [:title, :price, :quantity]
